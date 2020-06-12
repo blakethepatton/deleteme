@@ -8,29 +8,37 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+        id: step1
       - name: Dump job context
         env:
           JOB_CONTEXT: ${{ toJson(job) }}
         run: echo "$JOB_CONTEXT"
+        id: step2
       - name: Dump steps context
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
         run: echo "$STEPS_CONTEXT"
+        id: step3
       - name: Dump runner context
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
+        id: step4
       - name: Dump strategy context
         env:
           STRATEGY_CONTEXT: ${{ toJson(strategy) }}
         run: echo "$STRATEGY_CONTEXT"
+        id: step5
       - name: Dump matrix context
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+        id: step6
       - name: Fail the test
         run: cp doesnt_exist /dev/null
+        id: step7
       - name: Broadcast failure
+        id: step8
         if: ${{ failure() }}
         uses: surgiollc/slack-action@testing
         with:
