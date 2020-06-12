@@ -1,9 +1,8 @@
-name: Webhook testing
-on: [push]
+on: push
 
 jobs:
-  testsuite-a:
-    runs-on: ubuntu-latest
+  one:
+    runs-on: ubuntu-16.04
     steps:
       - name: Dump GitHub context
         env:
