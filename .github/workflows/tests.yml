@@ -12,3 +12,4 @@ jobs:
         uses: surgiollc/slack-action@testing
         with:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          STEPS_CONTEXT: ${{ toJson(steps) }}
