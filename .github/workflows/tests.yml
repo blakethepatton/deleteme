@@ -9,16 +9,6 @@ jobs:
         run: cp doesnt_exist /dev/null
       - name: Broadcast failure
         if: ${{ failure() }}
-        uses: surgiollc/slack-action@dev
-        with:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-  testsuite-b:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fail the test
-        run: cp doesnt_exist /dev/null
-      - name: Broadcast failure
-        if: ${{ failure() }}
-        uses: surgiollc/slack-action@dev
+        uses: surgiollc/slack-action@testing
         with:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
