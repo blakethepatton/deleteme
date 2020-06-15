@@ -35,7 +35,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
         id: step6
       - name: Fail the test
-        run: cp doesnt_exist /dev/null
+        run: ::set-output OUTPUT=$(cp doesnt_exist /dev/null | tee /dev/tty)
         id: step7
       - name: Broadcast failure
         id: step8
@@ -45,3 +45,4 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
+          output: steps.step7.OUTPUT
