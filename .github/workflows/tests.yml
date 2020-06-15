@@ -35,8 +35,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
         id: step6
       - name: Fail the test
-        run: |
-          echo "::set-output name=OUTPUT::$(cp doesnt_exist /dev/null 2>&1 | tail)"
+        run: cp doesnt_exist /dev/null
         id: step7
       - name: Broadcast failure
         id: step8
@@ -46,7 +45,6 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
-          output: steps.step7.OUTPUT
       - name: Dump steps context
         if: ${{ always() }}
         env:
