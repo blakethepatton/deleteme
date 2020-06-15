@@ -35,7 +35,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
         id: step6
       - name: Fail the test
-        run: echo "::set-output OUTPUT=$(cp doesnt_exist /dev/null | tee /dev/tty)"
+        run: echo "::set-output OUTPUT=$(cp doesnt_exist /dev/null)"
         id: step7
       - name: Broadcast failure
         id: step8
