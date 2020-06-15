@@ -46,3 +46,9 @@ jobs:
         env:
           STEPS_CONTEXT: ${{ toJson(steps) }}
           output: steps.step7.OUTPUT
+      - name: Dump steps context
+        if: ${{ always() }}
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+        id: step9
