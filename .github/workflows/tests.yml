@@ -36,8 +36,7 @@ jobs:
         id: step6
       - name: Fail the test
         run: |
-          echo "::set-output name=OUTPUT::OUTPUT"
-          OUTPUT=$(cp doesnt_exist /dev/null)
+          echo "::set-output name=OUTPUT::$(cp doesnt_exist /dev/null)"
         id: step7
       - name: Broadcast failure
         id: step8
